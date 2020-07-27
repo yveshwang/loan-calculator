@@ -5,7 +5,7 @@ const { checkSchema, validationResult } = require("express-validator");
 
 const { CreateMortgageLoan } = require("../lib/loanCalculatorService");
 
-function mortgage(req, res, next) {
+function index(req, res, next) {
   const validationErrors = validationResult(req);
 
   if (!validationErrors.isEmpty()) {
@@ -27,7 +27,7 @@ router.get(
     amount: { in: ["query"], isInt: true, toInt: true },
     years: { in: ["query"], isInt: true, toInt: true },
   }),
-  mortgage
+  index
 );
 
 module.exports = router;
