@@ -29,18 +29,6 @@ class SeriesLoanPrinciplePayment extends LinkedListNode {
     this.nextBalance = Math.abs(this.balance - this.principal);
     this.dateOfPayment = getDateOfPayment(this);
   }
-
-  toJSON() {
-    const { balance, nextBalance, interest, principal, repayment } = this;
-
-    return {
-      balance,
-      nextBalance,
-      interest,
-      principal,
-      repayment,
-    };
-  }
 }
 
 module.exports = SeriesLoanPrinciplePayment;
