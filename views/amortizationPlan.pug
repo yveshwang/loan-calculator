@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p Total interest: #{formatPrice(loan.amortizationPlan.getTotalInterest())}
+  table(class="table")
+    thead
+      tr
+        th(scope="col") payment
+        th(scope="col") balance
+        th(scope="col") interest
+        th(scope="col") principal
+        th(scope="col") repayment
+        th(scope="col") date
+    tbody
+      each payment, index in loan.amortizationPlan.getPayments()
+        tr
+          th(scope="row") #{index + 1}
+          td #{formatPrice(payment.balance)}
+          td #{formatPrice(payment.interest)}
+          td #{formatPrice(payment.principal)}
+          td #{formatPrice(payment.repayment)}
+          td #{formatMomentDate(payment.dateOfPayment)}
